@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS Psuedo Class Triggers</title>
+
+  <style>
+
+    h1:hover {
+      background: pink;
+    }
+
+    button:hover {
+      color: gray;
+    }
+    
+    input:focus {
+      background: teal;
+    }
+
+    input:active {
+      background: purple;
+    }
+    
+    button:focus {
+      border-radius: 10px;
+      background: #2ecc71;
+    }
+  
+    button:active {
+      background: orange;
+      font-size: 1.5em;
+    }
+
+    p:active {
+      color: yellow;
+    }
+  </style>
+
+</head>
+<body>
+  <h1>I am a h1</h1>
+  <h1>I am also a h1</h1>
+  <p>This is a paragraph</p>
+  <input type="text"/>
+  <button>Click Me</button>
+</body>
+</html>
