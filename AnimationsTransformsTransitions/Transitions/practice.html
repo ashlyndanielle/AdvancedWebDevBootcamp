@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transitions</title>
+</head>
+<style>
+
+  body {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  section {
+    width: 40%;
+    margin: 20px;
+  }
+
+  div {
+    height: 100px;
+    width: 100px;
+    background: #9b59b6;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    margin: 10px;
+  }
+
+  .one div:hover {
+    background: #e74c3c;
+    transform-origin: top left;
+    transform: scale(2);
+    border-radius: 50px;
+  }
+
+  .one .transition {
+    transition-duration: 2s;
+    transition-property: transform, background, border-radius;
+    transition-delay: 2s, 1s, 0s;
+  }
+
+  .two div:hover {
+    transform: translateX(300px);
+  }
+
+  .two:hover .transition {
+    transition-property: transform;
+    transition-duration: 2s;
+    transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+  }
+  
+  /* transition: [property] [duration] [timing-function] [delay] */
+
+  .three div:hover {
+    transform: rotate(45deg);
+    background-color: aquamarine;
+    color: #8d8d8d;
+  }
+
+  .three .transition {
+    transition: transform 3s cubic-bezier(0.05, 0.005, 0, 0.87) .2s,
+                background-color 2s ease-out,
+                color 2s ease-out .3s;
+  }
+
+</style>
+<body>
+
+  <section class="one">
+    <div class="">boring</div>
+    <div class="transition">animated</div>
+  </section>
+
+  <section class="two">
+    <div class="">boring</div>
+    <div class="transition">animated</div>
+  </section>
+
+  <section class="three">
+    <div class="">boring</div>
+    <div class="transition">animated</div>
+  </section>
+  
+</body>
+</html>
