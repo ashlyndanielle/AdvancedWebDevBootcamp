@@ -1,24 +1,189 @@
-.rainbow p {
-  animation: rainbow 5s linear infinite alternate;
+/**************************/
+/****** RAINBOW TEXT ******/
+/**************************/
+
+  /* .rainbow p {
+      animation: rainbow 5s linear infinite alternate;
+    }
+
+    @keyframes rainbow {
+      0%{
+        color: red;
+        font-size: 20px;
+      }
+      25% {
+        color: orange;
+      }
+      50% {
+        color: yellow;
+        font-size: 40px;
+      }
+      75% {
+        color: green;
+      }
+      100% {
+        color: blue;
+        font-size: 20px;
+      }
+    } */
+
+/*****************************/
+/****** ANIMATED SUNSET ******/
+/*****************************/
+
+  /* body {
+    margin: 0 0 0 0;
+    background-color: #2c3e50;
+    animation: sky 10s linear infinite;
+  }
+
+  .grass {
+    background: green;
+    height: 600px;
+    width: 100%;
+    position: absolute;
+  }
+
+  .sun {
+    background: #f1c40f;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: sun 10s linear infinite;
+  }
+
+
+
+
+  @keyframes sky {
+    0%, 100% {
+      background-color: #2c3e50;
+    }
+    5%, 95% {
+      background-color: #ff7d5c;
+    }
+    15%, 85% {
+      background-color: #50b2e7;
+    }
+  }
+
+  @keyframes sun {
+    0% {
+      transform: translate(-100%, 100%);
+    }
+    25% {
+      transform: translate(150%, -25%);
+    }
+    50% {
+      transform: translate(300%, -50%);
+    }
+    75% {
+      transform: translate(450%, -25%);
+    }
+    100% {
+      transform: translate(700%, 100%)
+    }
+  } */
+
+/*****************************/
+/****** ANIMATED LOADER ******/
+/*****************************/
+
+html {
+  background: #ecf0f1;
 }
 
-@keyframes rainbow {
-  0%{
-    color: red;
-    font-size: 20px;
+body, h1, h2 {
+  font-family: Helvetica, Sans-serif; 
+  color: #2c3e50;
+  margin:0; 
+  padding:0; 
+  font-weight:300;
+}
+
+h1 {
+  font-size: 80px;
+}
+
+h2 {
+  font-size: 36px;
+  opacity: 0;
+  animation: appear 1s 3s forwards;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.container{
+  margin:4em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.loader {
+  height: 100px;
+  width: 100px;
+  margin-top: 80px;
+  border-radius: 50%;
+  border: 10px solid #ccc;
+  border-right-color: #3599d5;
+  border-left-color: #3599d5;
+  animation: spinner 3s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg) scale(1);
   }
   25% {
-    color: orange;
+    border-right-color: #ab7bd8;
+    border-left-color: #ab7bd8;
   }
   50% {
-    color: yellow;
-    font-size: 40px;
+    transform: rotate(360deg) scale(1.1);
+    border-right-color: #e08f85;
+    border-left-color: #e08f85;
   }
   75% {
-    color: green;
+    border-right-color: #65af4e;
+    border-left-color: #65af4e;
   }
   100% {
-    color: blue;
-    font-size: 20px;
+    transform: rotate(720deg) scale(1);
   }
 }
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 
+
+shorthand:
+  -order is flexible with one caveat
+  -first time will be assigned to duration and second time will be assigned to delay
+
+animation-name
+animation-direction
+animation-timing-function
+animation-delay
+
+animation-fill-mode: forwards/backwards/both;
+  -this determines hwo the animated element looks at the beginning
+   and/or end of the animation
+  -ie) if you have an element that is animated to translate across the
+   screen, it will stay there if fill-mode is set to forwards
+
+animation-play-state: paused/running;
+  -usually used through javascript to manipulate the animation
+  -also used with :hover
+
+animation-direction
+animation-iteration-count
+*/
