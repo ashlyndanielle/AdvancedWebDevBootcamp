@@ -1,0 +1,68 @@
+/* General Styles */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font: normal 16px sans-serif;
+  color: #555;
+}
+
+nav {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+a:hover {
+  opacity: 1;
+}
+
+/* Header Styles */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 100px 0;
+  opacity: 0;
+  animation: fadeIn 1s 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+header h2 {
+  font-family: "Quicksand", sans-serif;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-around;
+  margin-right: -15px;
+}
+
+header nav a {
+  margin: 0 15px;
+}
+
+
+/* Hero Styles */
+
+.hero {
+  background: url('./assets/img/main.jpg');
+  background-size: cover;
+  height: 500px;
+  width: 100%;
+}
