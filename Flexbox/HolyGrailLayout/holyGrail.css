@@ -62,8 +62,7 @@ main {
   flex-basis: 800px;
 }
 
-
-
+/* media queries */
 
 @media (max-width: 640px) {
   main {
