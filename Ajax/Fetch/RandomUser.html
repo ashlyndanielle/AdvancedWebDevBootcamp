@@ -112,23 +112,31 @@
     function getRandomUser() {
       fetch(RANDOM_USER_API)
       .then(handleError)
-      .then( response => {
-        console.log('RESPONSE: ', response.results[0]);
-        let res = response.results[0];
+      .then(parseJSON)
+      .then(updateProfile)
+      .catch( err => console.log(err));
+    }
+
+
+    function handleError(res) {
+      if (!res.ok) {
+        throw Error(res.status);
+      }
+      return res;
+    }
+    
+    function parseJSON(res) {
+      return res.json();
+    }
+
+    function updateProfile(response) {
+      console.log('RESPONSE: ', response.results[0]);
+        const res = response.results[0];
         NAME.innerHTML = `${res.name.first} ${res.name.last}`;
         USERNAME.innerHTML = res.login.username;
         EMAIL.innerHTML = res.email;
         CITY.innerHTML = res.location.city;
         AVATAR.src = res.picture.large;
-      })
-      .catch( err => console.log(err));
-    }
-
-    function handleError(response) {
-      if (!response.ok) {
-        throw Error(response.status);
-      }
-      return response.json();
     }
 
   </script>
