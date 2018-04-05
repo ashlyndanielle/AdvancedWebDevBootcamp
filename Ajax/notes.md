@@ -28,3 +28,11 @@
       - jQuery
       - Axios
 
+  *XHR Request Issues*
+    ugly, bulky syntax
+    16 years old
+    no streaming support
+
+  *FETCH API*
+    replacement/update to XHR
+    *cleaner* and allows more functionality
