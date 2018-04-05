@@ -54,3 +54,32 @@ fetch(bitcoinURL, {
 }).catch( err => {
   // handle error
 })
+
+/* ERROR HANDLING
+    1. .catch() will be fired if there is a problem with the request itself
+        -the user's internet isn't working
+        -there's problems with credentials
+        -**this does not fire just because of the status of the response*
+*/
+const ashlynAPI = 'https://api.github.com/users/ashlyndanielle'
+
+fetch(ashlynAPI)
+.then(handleError)
+.then(res => {
+  console.log('EVERYTHING IS FINE');
+  console.log('RESPONSE: ', res);
+}).catch(err => {
+  console.log('Something went wrong...');
+  // err will be whatever we pass into throw Error() above
+  console.log(err);
+})
+
+
+function handleError(res) {
+  // if the status is not successful
+  if (!res.ok) {
+    throw Error(res.status);
+  }
+  // return something to pass on
+  return res.json();
+}
