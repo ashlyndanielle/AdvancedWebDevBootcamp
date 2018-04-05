@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Random Dog Images</title>
+  <style>
+
+    h1 {
+      text-align: center;
+    }
+
+    button {
+      display: block;
+      margin: 40px auto;
+      padding: 10px 15px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Look at the console for more fun!</h1>
+
+  <button>CLICK ME TO MAKE A BAD REQUEST</button>
+</body>
+
+
+<script>
+
+const btn = document.querySelector('button');
+
+const ashlynAPI = 'https://api.github.com/users/ashlyndanielle'
+
+btn.addEventListener('click', () => {
+  fetch(ashlynAPI).then( res => {
+    return res.json();
+  }).then( res => {
+    console.log('RESPONSE: ', res);
+  }).catch( err => {
+    console.log('Something went wrong...');
+  })
+})
+
+
+
+
+
+
+
+
+
+
+//********************** LOOK IN THE CONSOLE HERE **********************//
+// example of fetch();
+  const bitcoinURL = "https://api.coindesk.com/v1/bpi/currentprice.json";
+
+
+/* FETCH OPTIONS
+    1. always have to provide the url first
+    2. optional object as the second parameter that specifies options
+        -default method is always get
+        -using JSON.stringify on the body makes it so you don't have to
+         follow the proper syntax
+        -you can view the body of your request in the network tab when
+         you click on the fetch request; it will be under the Request Payload
+         dropdown of the headers tab
+    3. all the fetch options are located here:
+        https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+*/
+
+  fetch(bitcoinURL, {
+    method: "POST",
+    body: JSON.stringify({
+      name: 'blue',
+      login: 'bluecat'
+    })
+  }).then( res => {
+    return res.json();
+  }).then( data => {
+    console.log("BITCOIN: ", data);
+  }).catch( err => {
+    console.log(err);
+  })
+
+</script>
+</html>

@@ -1,4 +1,4 @@
-/**** SYNTAX *****
+/**** SYNTAX *****/
 
 fetch(url)
   .then( res => {
@@ -8,7 +8,7 @@ fetch(url)
     console.log(err);
   })
 
-*** END SYNTAX ***/
+/*** END SYNTAX ***/
 
 const bitcoinURL = "https://api.coindesk.com/v1/bpi/currentprice.json";
 
@@ -26,3 +26,31 @@ fetch(bitcoinURL)
   }).then( data => {
     console.log(data);
   })
+
+
+/* FETCH OPTIONS
+    1. always have to provide the url first
+    2. optional options object as the second parameter
+        -default method is always get
+        -using JSON.stringify on the body makes it so you don't have to
+         follow the proper syntax
+        -you can view the body of your request in the network tab when
+         you click on the fetch request; it will be under the Request Payload
+         dropdown of the headers tab
+    3. all the fetch options are located here:
+        https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+*/
+
+
+
+fetch(bitcoinURL, {
+  method: 'POST',
+  body: JSON.stringify({
+    name: 'blue',
+    login: 'bluecat'
+  })
+}).then( data => {
+  // do something
+}).catch( err => {
+  // handle error
+})
