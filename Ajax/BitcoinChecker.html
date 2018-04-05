@@ -12,17 +12,13 @@
       background: #2A3640;
       display: flex;
       flex-direction: column;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
       margin: auto;
-      padding: 0;
+      padding: 50px 0 0 0;
     }
     h1 {
       color: #40C991;
       text-align: center;
-      text-transform: uppercase;
+      margin-bottom: 40px;
     }
     .price-container {
       margin: 0 auto;
@@ -44,7 +40,7 @@
     .btn {
       text-decoration: none;
       display: inline-block;
-      padding: 10px 15px;
+      padding: 10px 120px;
       background: white;
       color: #000000CC;
       box-shadow: 0 2px 4px 0 rgba(0,0,0,0.7);
@@ -55,13 +51,16 @@
     }
   </style>
 </head>
+
+
 <body>
 
   <h1>Live Bitcoin Price Checker</h1>
   <div class="price-container">
-    <h3>Bitcoin Current Price: <span id="price">________</span></h3>
+    <h3>Bitcoin Current Price: &nbsp;<span id="price"></span></h3>
     <a class="btn">Refresh Data</a>
   </div>
+
   
 
   <script>
@@ -70,22 +69,24 @@
     const button = document.querySelector('a');
     const price = document.getElementById("price");
 
-    button.addEventListener("click", () => {
-      const XHR = new XMLHttpRequest();
+    button.addEventListener("click", getBitcoinPrice);
+    window.onload = getBitcoinPrice;
 
+    function getBitcoinPrice() {
+      const XHR = new XMLHttpRequest();
       XHR.onreadystatechange = function() {
         if (XHR.readyState == 4 && XHR.status == 200) {
           const data = JSON.parse(XHR.responseText);
-          console.log(data.bpi.USD);
+          console.log(data);
+
           let rate = data.bpi.USD.rate_float.toFixed(2);
-          const USD = data.bpi.USD.code;
-          price.innerHTML = ` ${rate} ${USD}`;
+          const code = data.bpi.USD.code;
+          price.innerHTML = ` ${rate} ${code}`;
         }
       }
-
       XHR.open("GET", bitcoinURL);
       XHR.send();
-    })
+    }
   </script>
 </body>
 </html>
