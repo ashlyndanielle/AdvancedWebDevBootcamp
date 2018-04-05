@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Coda|Varela+Round" rel="stylesheet">
+  <title>Random User Generator</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background: #E9EEEF;
+      margin: 0;
+      padding: 40px;
+      color: #2D3E4F;
+      font-family: Raleway;
+    }
+    h1 {
+      text-align: center;
+      font-family: Coda;
+    }
+    .user-container {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      margin: 0 auto;
+      width: 500px;
+      padding: 15px 15px 30px 15px;
+      background: white;
+      display: flex;
+    }
+    img {
+      height: 128px;
+      width: 128px;
+      margin-right: 20px;
+    }
+    #name {
+      margin: 0;
+      padding-top: 5px;
+      font-family: Coda;
+      color: #239F85;
+    }
+    #username {
+      font-family: "varela round";
+      font-size: .9em;
+      color: #3498db;
+      margin: 0;
+    }
+    .contact {
+      margin-top: 30px;
+    }
+    .contact p {
+      color: #7F8C8D;
+      font-family: "varela round";
+      font-size: .9em;
+      margin: 0;
+    }
+    #btn {
+      display: block;
+      width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #239F85;
+      color: white;
+      font-family: Coda;
+      text-align: center;
+      font-size: 1.2em;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      cursor: pointer;
+    }
+    #btn:hover {
+      background: #1abc9c;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Random User Generator</h1>
+  <div class="user-container">
+    <img id="avatar" src="https://www.icon2s.com/img128/128x128-black-white-android-user.png" />
+    <section class="details">
+      <div class="profile">
+        <h2 id="name"></h2>
+        <p id="username"></p>
+      </div>
+      <div class="contact">
+        <p>Email: <span id="email"></span></p>
+        <p>City: <span id="city"></span></p>
+      </div>
+    </section>
+  </div>
+  <a id="btn">Next User</a>
+  
+
+  <script>
+
+    const RANDOM_USER_API = 'https://randomuser.me/api';
+    
+    const NAME = document.getElementById('name');
+    const USERNAME = document.getElementById('username');
+    const AVATAR = document.getElementById('avatar');
+    const EMAIL = document.getElementById('email');
+    const CITY = document.getElementById('city');
+    const NEXT_USER_BUTTON = document.getElementById('btn');
+
+    window.onload = getRandomUser;
+    NEXT_USER_BUTTON.addEventListener('click', getRandomUser);
+
+    function getRandomUser() {
+      fetch(RANDOM_USER_API)
+      .then(handleError)
+      .then( response => {
+        console.log('RESPONSE: ', response.results[0]);
+        let res = response.results[0];
+        NAME.innerHTML = `${res.name.first} ${res.name.last}`;
+        USERNAME.innerHTML = res.login.username;
+        EMAIL.innerHTML = res.email;
+        CITY.innerHTML = res.location.city;
+        AVATAR.src = res.picture.large;
+      })
+      .catch( err => console.log(err));
+    }
+
+    function handleError(response) {
+      if (!response.ok) {
+        throw Error(response.status);
+      }
+      return response.json();
+    }
+
+  </script>
+</body>
+</html>
