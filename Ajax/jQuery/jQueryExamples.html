@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jQuery Examples</title>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+</head>
+<style>
+  body {
+    margin: 20px;
+  }
+</style>
+
+<body>
+  <h2>jQuery Examples</h2>
+  <button id="btn">Bacon Button</button>
+  <p id="bacon"></p>
+  <script>
+    // basic syntax for $.ajax //
+    /*
+      $.ajax({
+        method: "GET",
+        url: "some.api.com"
+      })
+      .done( res => {
+        console.log(res);
+      })
+      .fail( () => {
+        // do something
+      })
+    */
+
+    $('#btn').click(() => {
+      $.ajax({
+        // method is get by default but it's good to be explicit
+        method: "GET",
+        url: "https://baconipsum.com/api/?type=meat-and-filler",
+        // dataType is json by default
+        dataType: 'json'
+      })
+      .done(addBacon)
+      .fail( () => {
+        // this will fire if the status failed as well
+        console.log('OH NO YOU FAILED!');
+      })
+    })
+
+    function addBacon(res) {
+      $('#bacon').text(res[0]);
+    }
+  </script>
+</body>
+
+</html>

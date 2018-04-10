@@ -36,3 +36,18 @@
   *FETCH API*
     replacement/update to XHR
     *cleaner* and allows more functionality
+
+  *jQUERY*
+    The "write more, do less library"
+    How to include jQuery:
+      1. download/install it 
+      2. go to code.jquery.com and include a cdn script at the top
+    There is really good documentation on the jQuery site with great examples
+
+    jQuery ajax methods:
+      1. $.ajax
+      2. $.get
+      3. $.post
+      4. $.getJSON
+    Ajax call comes back already parsed but you can override this by
+    passing in a dataType
