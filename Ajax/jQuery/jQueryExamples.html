@@ -20,7 +20,7 @@
   <button id="btn">Bacon Button</button>
   <p id="bacon"></p>
   <script>
-    // basic syntax for $.ajax //
+    // BAISIC SYNTAX FOR AJAX //
     /*
       $.ajax({
         method: "GET",
@@ -34,6 +34,7 @@
       })
     */
 
+    // AJAX EXAMPLE
     $('#btn').click(() => {
       $.ajax({
         // method is get by default but it's good to be explicit
@@ -52,6 +53,8 @@
     function addBacon(res) {
       $('#bacon').text(res[0]);
     }
+
+
   </script>
 </body>
 
