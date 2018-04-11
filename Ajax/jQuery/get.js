@@ -11,6 +11,7 @@ const bestSellers = 'https://api.nytimes.com/svc/books/v3/lists.json?' + $.param
 $('#getBtn').click( () => {
   $.get(bestSellers)
   .done(listBooks)
+  .fail( () => console.log('ERROR!'))
 })
 
 function listBooks(res) {
