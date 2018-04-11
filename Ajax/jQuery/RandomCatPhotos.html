@@ -67,7 +67,7 @@
     const catBtn = $('#btn');
 
     catBtn.click( () => {
-      $.get(CAT_API)
+      $.getJSON(CAT_API)
       .done(changeKitty)
       .fail( err => console.log(err) );
     })
