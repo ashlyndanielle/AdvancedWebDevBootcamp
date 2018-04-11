@@ -15,8 +15,11 @@ $('#getBtn').click( () => {
 
 function listBooks(res) {
   $('#books').show();
-  res.results.map( book => {
-    console.log(book.book_details[0]);
-    $('#books ul').append(`<li>${book.book_details[0].title}<br><span id="author">- <em>${book.book_details[0].author}</em></span></li>`);
-  })
+  // only fire if the books haven't been retrieved
+  if (!$('#books ul').children().length) {
+    res.results.map( book => {
+      console.log(book.book_details[0]);
+      $('#books ul').append(`<li>${book.book_details[0].title}<br><span id="author">- <em>${book.book_details[0].author}</em></span></li>`);
+    })
+  }
 }
