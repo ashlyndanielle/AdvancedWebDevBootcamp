@@ -101,6 +101,24 @@
     function reveal() {
       answer.style.display = 'block';
     }
+
+    axios.get('https://jsonplaceholder.typicode.com/comments', {
+      params:{
+        postId: 1
+      }
+    })
+    .then( res => console.log(res) )
+    .catch( handleErrors )
+
+    function handleErrors(err) {
+      if(err.response) {
+        console.log('error with response')
+      } else if (err.request) {
+        console.log('problem with request')
+      } else {
+        console.log('something went wrong...')
+      }
+    }
   </script>
 </body>
 </html>
