@@ -1,0 +1,3 @@
+# this is how to use the REST client extension
+
+GET https://opentdb.com/api.php?amount=1

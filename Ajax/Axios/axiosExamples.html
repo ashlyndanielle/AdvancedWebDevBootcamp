@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Axios</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <style>
+    body {
+      padding: 20px;
+      text-align: center;
+      margin: 0;
+      background: #f4f4f4;
+      font-family: montserrat;
+    }
+    h1 {
+      text-align: center;
+      color: #76323f;
+    }
+    .container {
+      background: #c09f80;
+      color: #565656;
+      padding: 20px;
+      margin: auto;
+      max-width: 720px;
+    }
+    button {
+      margin: 10px;
+      background: #76323f;
+      color: white;
+      letter-spacing: .1em;
+      border: none;
+      box-shadow: 2px 2px 7px 0px #565656c0;
+      padding: 15px 30px;
+    }
+    button:focus {
+      outline: none;
+    }
+    button:hover {
+      background: #9c4958;
+    }
+    #question {
+      color: #565656;
+      margin: 10px auto;
+    }
+    #answer {
+      color: #565656;
+      margin: 10px auto;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Axios Examples</h1>
+  <div class="container">
+    <h3 id="question"></h3>
+    <p id="answer"></p>
+    <div class='btn-container'>
+      <button id="show-answer">Reveal Answer</button>
+      <button id="next-question">Next Question</button>
+    </div>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    // AXIOS FORMAT //
+    /*
+      axios.get(url)
+      .then( res => {
+        console.log(res.data);
+      })
+      .catch( err => {
+        console.log(err);
+      })
+    */
+    const trivaAPI = 'https://opentdb.com/api.php?amount=1';
+
+    const showAnswer = document.getElementById('show-answer');
+    const nextQuestion = document.getElementById('next-question')
+    const question = document.getElementById('question');
+    const answer = document.getElementById('answer');
+
+    showAnswer.addEventListener('click', reveal);
+    nextQuestion.addEventListener('click', getQuestion);
+
+    window.onload = getQuestion();
+
+    function getQuestion() {
+      answer.style.display = 'none';
+      axios.get(trivaAPI)
+      .then( res => {
+        console.log(res.data.results[0]);
+        question.innerHTML = res.data.results[0].question;
+        answer.innerHTML = res.data.results[0].correct_answer;
+      })
+      .catch( err => {
+        console.log(err);
+      })
+    }
+
+    function reveal() {
+      answer.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
