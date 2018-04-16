@@ -16,4 +16,24 @@
 
 
 *** THIS ***
-  - 
+  - determined by how the function is called ( execution context )
+  - can be determined using four rules:
+      1. global
+      2. object/implicit
+      3. explicit
+      4. new
+
+  1. GLOBAL CONTEXT
+    - when *this* is not inside of a declared object
+    - there hasn't been an object literal defined that contains
+      a function that uses keyword *this*
+    - value refers to the global object ( window in the browser )
+      console.log(this) // window
+
+  2. OBJECT/IMPLICIT
+    - the value of *this* will always be the *closest* parent
+      object when used inside of a declared object
+    - *this* is defined when a function is run ( this is why you use
+      the constructor functions! )
+  3. EXPLICIT: CALL/APPLY/BIND
+    - 
