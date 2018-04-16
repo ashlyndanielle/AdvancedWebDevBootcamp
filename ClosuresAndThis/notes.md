@@ -1,4 +1,4 @@
-*** closures ***
+*** CLOSURES ***
   - a closure is a function that makes use of variables
     defined in an outer function that has returned
   - a function is not a closure just because it is a function
@@ -10,3 +10,10 @@
   - we can either call the inner function right away by using
     and extra () or we can store the result of the function
     in a variable
+
+  *private variable* can only be access from a certain scope
+  and can't be modified from an external scope
+
+
+*** THIS ***
+  - 

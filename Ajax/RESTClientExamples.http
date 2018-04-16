@@ -1,7 +1,13 @@
 # this is how to use the REST client extension
 
+# trivia
 # GET https://opentdb.com/api.php?amount=1
 
+# tester api for developers
 # GET https://jsonplaceholder.typicode.com/comments
 
-GET https://ron-swanson-quotes.herokuapp.com/v2/quotes
+# Ron Swanson quote generator
+# GET https://ron-swanson-quotes.herokuapp.com/v2/quotes
+
+# nasa mars rover photos
+GET https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=DEMO_KEY

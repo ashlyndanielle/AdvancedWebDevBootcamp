@@ -1,3 +1,5 @@
+/* RUN QUOKKA ON THIS FILE OR RUN THESE IN THE DEVTOOLS CONSOLE */
+
 /***************** EXAMPLE 1 *****************/
 function outer() {
   var start = 'Closures are';
@@ -42,3 +44,121 @@ function outerFn() {
   }
 }
 outerFn()();
+
+
+/***************** EXAMPLE 4 *****************/
+// private variables
+
+function counter() {
+  let count = 0;
+  return function increase() {
+    count++;
+    console.log(count);
+    return count;
+  }
+}
+
+const counter1 = counter();
+
+counter1;
+
+counter1();
+counter1();
+console.log(counter1())
+
+
+/***************** EXAMPLE 5 *****************/
+
+function classRoom() {
+  const instructors = ['Gus', 'Jeremy'];
+  return {
+    getInstructors: function() {
+      return instructors;
+    },
+    addInstructor: function(instructor) {
+      instructors.push(instructor);
+      return instructors;
+    }
+  }
+}
+
+const mathClass = classRoom();
+mathClass;
+
+const mathInstructors = mathClass.getInstructors();
+mathInstructors;
+
+mathClass.addInstructor('Aaron');
+mathClass.addInstructor('Beth');
+mathInstructors;
+
+const englishClass = classRoom();
+const englishInstructors = englishClass.getInstructors();
+englishClass.addInstructor('Brett');
+englishInstructors;
+
+// This is not ideal as you can still mutate the variable
+englishClass.getInstructors().pop();
+englishInstructors;
+
+// WITH IMMUTABILITY:
+// use .slice() to return a copy so that the array remains immutable
+
+/*
+function classRoom() {
+  const instructors = ['Gus', 'Jeremy'];
+  return {
+    getInstructors: function() {
+      return instructors.slice();
+    },
+    addInstructor: function(instructor) {
+      instructors.push(instructor);
+      return instructors.slice();
+    }
+  }
+}
+*/
+
+/********** EXERCISES **********/
+
+function specialMultiply(a,b) {
+  if(arguments.length === 1) {
+    return function(b) {
+      return a*b;
+    }
+  }
+  return a*b;
+}
+
+
+
+
+function guessingGame(amount) {
+  let answer = Math.round(Math.random()*11);
+  answer;
+  let guesses = 0;
+  let completed = false;
+  return function checker(guess) {
+    if (!completed) {
+      guesses++;
+      if (guess === answer) {
+        completed = true;
+        return "You got it!"
+      }
+      else if (guess > answer) return "Your guess is too high!";
+      else if (guess < answer) return "Your guess is too low";
+      else if (guesses === amount) {
+        completed = true;
+        return `No more guesses, the answer was ${answer}`;
+      }
+    }
+    return "You are all done playing!";
+  }
+}
+
+const game = guessingGame(5);
+console.log(game(3))
+console.log(game(7))
+console.log(game(4))
+
+
