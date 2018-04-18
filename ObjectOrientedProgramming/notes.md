@@ -12,13 +12,13 @@
   - we can avoid duplication in multiple constructor functions by
     using call or apply
 
-  ***Constructor Functions***
+***Constructor Functions***
   - capitalize the function name
   - *this* is utilized
   - purpose is to construct objects
   - must use the *new* keyword
 
-  ***The new keyword***
+***The new keyword***
   1. creates an empty object
   2. sets the keyword *this* to be that empty object
   3. adds the line "return this;" to the end of the function
@@ -29,7 +29,7 @@
     between the object created and the prototype property of the 
     constructor function
 
-***Prototypes***
+***Prototypes*** ( prototypes.js )
   - every constructor function has a property on it called
     .prototype which is an object
   - that object has a property on it called .constructor which
@@ -40,7 +40,17 @@
   - objects created by the constructor get access to the to the
     prototype object through the link .__proto__
 
-***prototype chain***
+***Prototype Chain***
   - this is how javascript finds methods and properties
   - if it can't find something on your "object" it looks at
     __proto__ and continues up the __proto__ chain
+
+***Inheritance*** ( inheritance.js )
+  - the passing of methods and properties from one class to another
+  - use Object.create(Constructor.prototype)
+  - must reset the constructor aftewards
+  *Two parts to prototypal inheritance*
+    1. set the prototype to be an object created with another prototype
+        ex: Student.prototype = Object.create(Person.prototype);
+    2. reset the constructor property
+        ex: Student.prototype.constructor = Student
