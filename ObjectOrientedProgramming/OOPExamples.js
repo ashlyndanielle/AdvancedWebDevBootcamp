@@ -53,3 +53,29 @@ buzz;
 vroom;
 rwar;
 
+//***** exercises *****\\
+
+function Person(firstName, lastName, favoriteColor, favoriteNumber) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.favoriteColor = favoriteColor;
+  this.favoriteNumber = favoriteNumber;
+
+  this.multiplyFavoriteNumber = num => {
+    return num * this.favoriteNumber;
+  }
+}
+
+function Parent(firstName, lastName, favoriteColor, favoriteFood){
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.favoriteColor = favoriteColor;
+  this.favoriteFood = favoriteFood;
+}
+
+function Child(firstName, lastName, favoriteColor, favoriteFood){
+  Parent.apply(this, arguments);
+}
+
+const chloe = new Child('Chloe', 'Fairbanks', 'Purple', 'Broccoli');
+chloe;
