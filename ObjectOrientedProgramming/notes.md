@@ -1,4 +1,5 @@
 *** OBJECT ORIENTED PROGRAMMING ***
+
   *object oriented programming is a model based on objects constructed from a blueprint*
   *we write OOP to write more modular and sharable code*
   - a programming model based around the idea of objects
@@ -11,13 +12,13 @@
   - we can avoid duplication in multiple constructor functions by
     using call or apply
 
-  *Constructor Functions*
+  ***Constructor Functions***
   - capitalize the function name
   - *this* is utilized
   - purpose is to construct objects
   - must use the *new* keyword
 
-  *The new keyword*
+  ***The new keyword***
   1. creates an empty object
   2. sets the keyword *this* to be that empty object
   3. adds the line "return this;" to the end of the function
@@ -42,4 +43,4 @@
 ***prototype chain***
   - this is how javascript finds methods and properties
   - if it can't find something on your "object" it looks at
-    __proto__
+    __proto__ and continues up the __proto__ chain
