@@ -10,4 +10,7 @@
 # GET https://ron-swanson-quotes.herokuapp.com/v2/quotes
 
 # nasa mars rover photos
-GET https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=DEMO_KEY
+# GET https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=DEMO_KEY
+
+# nasa apod
+GET https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=5
