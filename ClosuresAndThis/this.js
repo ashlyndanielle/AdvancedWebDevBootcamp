@@ -160,7 +160,7 @@ console.log(sumValues.apply(this, nums));
 const blah = {
   food: 'Apples',
   eatFood: function() {
-    setTimeout( () => {
+    setTimeout( function() {
       console.log(`I'm going to eat some ${this.food} and ${this} is my context`);
     }, 1000)
   }
