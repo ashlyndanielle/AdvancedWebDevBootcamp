@@ -49,6 +49,47 @@ _arrow functions_
     *this* refers to whatever the value of *this* would be
     immediately outside of that function - it's enclosing context
   * do not have the *arguments* keyword either
-    - arguments can be access inside an arrow function IF that function
+    - arguments can be accessed inside an arrow function IF that function
       is inside of another function but it only gives you the arguments
       of the outer function
+  * do not use arrow functions when defining object methods!
+
+_for...of loop_
+  * used for iterating over arrays
+  * cannot be used to iterate over objects
+    - this will give a type error because we are trying to invoke
+      "symbole.iterator" which does not exist on objects
+
+_rest operator_
+  * the rest operator always returns an array
+  * called the rest operator ONLY when it is a parameter to a function
+  * accessed without the ... inside the function
+  * better alternative to using the arguments array-like object : check example
+    - rest operator turns arguments into an actual array
+
+_spread operator_
+  * ... used outside of function parameters
+  * takes an array and spreads each value out : check examples
+  * used on arrays to spread out each value - useful when you have an array
+    but what you are working with expects comma separated values (like when
+    you have a function that accepts each value individually - used to be done
+    with the apply method) : check examples
+  
+_object enhancements_
+  * if object keys and values are the same name we don't have to repeat
+    - ex) firstname: firstname
+  * remove colon when defining object methods
+    - ex) sayHi: function.... becomes sayHi() {...}
+  * computed property names: can asign a value using bracket notation while
+    defining the object : check examples OBJECT ENHANCEMENTS
+
+**Destructuring: extracting values from data stored in objects and arrays**
+
+_object destructuring_
+  * reassign variables using :
+    - ex) { firstname:first } = mentor; (check examples)
+
+_array destructuring_
+  * check examples
+  * swapping values - when you don't want to make a new array but do want to swap
+    the places of values
