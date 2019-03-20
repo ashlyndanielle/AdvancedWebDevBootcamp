@@ -55,6 +55,26 @@ __OBJECTIVES__
 *MAPS*
   * also called "hash maps" or "hash" in other languages
   * similar to objects except that the keys can be ANY data type, not just a string
-  *
+  * created using *new* keyword
+  * check examples lines ~254-
+  * why use maps?
+    - finding the size is easy compared to an object as maps have a size property
+    - keys can be any data type
+    - maps don't have a prototype object so you won't accidentally overwrite keys
+    - iterating over keys and values is simple
+  * when to use maps?
+    - if you need to look up keys dynamically (they aren't hard coded strings)
+    - if you need keys that aren't strings
+    - if you are frequently adding and removing key/value pairs
+    - if you are operating on multiple keys at a time
+  *WeakMap*
+    - all keys must be objects
+    - more performant than maps but cannot be iterated over
+
+*SETS*
+  * all values are unique
+  * any data type can exist
+  * created using *new* keyword
+  * also has a *WeakSet* similar to WeakMap
 
 **PART TWO**
