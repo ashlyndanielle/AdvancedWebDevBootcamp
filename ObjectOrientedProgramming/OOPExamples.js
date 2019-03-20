@@ -10,12 +10,17 @@ const firstHouse = new House(2, 1, 1500);
 firstHouse;
 
 function Dog(name, age) {
+
   this.name = name;
   this.age = age;
   this.bark = function() {
     console.log(`${this.name} just barked!`)
   }
 }
+
+console.log(Dog) // function Dog
+console.log(Dog.prototype) // Dog object
+console.log(Dog.prototype.constructor) // function Dog
 
 const reo = new Dog("Reo", 13);
 reo;
@@ -65,6 +70,9 @@ function Person(firstName, lastName, favoriteColor, favoriteNumber) {
     return num * this.favoriteNumber;
   }
 }
+
+const tegan = new Person('Tegan', 'Fairbanks', 'purple', 12);
+console.log(tegan.multiplyFavoriteNumber(2));
 
 function Parent(firstName, lastName, favoriteColor, favoriteFood){
   this.firstName = firstName;

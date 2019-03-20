@@ -6,14 +6,16 @@ function Person(name) {
 const ashlyn = new Person('Ashlyn');
 const gus = new Person('Gus');
 
-console.log( ashlyn.__proto__ === Person.prototype );
-console.log( gus.__proto__ === Person.prototype );
+console.log(ashlyn.__proto__ === Person.prototype);
+console.log(gus.__proto__ === Person.prototype);
 
-console.log( Person.prototype.constructor === Person );
+console.log(Person.prototype.constructor === Person);
 
 Person.prototype.isIntsructor = true;
+Person.isAwesome = true;
 
 console.log(ashlyn.isIntsructor);
+console.log(ashlyn.isAwesome);
 console.log(gus.isIntsructor);
 
 
@@ -28,13 +30,13 @@ function Someone(name) {
 
 /*
 everytime we invoke a new Someone function
-we have to redefine the sayHi function
+it redefines the sayHi function
 
-  it's better code to define it once using the
-  prototype like I have done below
-  */
+it's better code to define it once using the
+prototype like below
+*/
  
- /************* exercise 1 *************/
+/************* exercise 1 *************/
 
 function BetterSomeone(firstName, lastName, favoriteColor) {
   this.firstName = firstName;
@@ -58,9 +60,9 @@ BetterSomeone.prototype.addToFamily = function(person) {
 
 const elizabeth = new BetterSomeone('Elizabeth', 'Huntsman', 'green');
 const josh = new BetterSomeone('Josh', 'Huntsman', 'purple');
-console.log( elizabeth.sayHi() );
+console.log(elizabeth.sayHi());
 console.log(elizabeth.addToFamily(josh));
-console.log(elizabeth.family.length);
+console.log(elizabeth.family);
 
 
 /************* exercise 2 *************/

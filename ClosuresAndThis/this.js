@@ -48,20 +48,23 @@ const stopHiccuping = {
     return `Hi ${firstName}`;
   },
   determineContext: function() {
-    return this === person;
+    return this === stopHiccuping;
   },
   dog: {
+    firstName: 'Reo',
     sayHello: function() {
       return `Bark bark ${this.firstName}`;
     },
     determineContext: function() {
-      return this === person;
+      return `dog context is ${this.firstName}`
+      return this === stopHiccuping.dog;
     }
   }
 }
 
 console.log(stopHiccuping.dog.sayHello.call(stopHiccuping));
 console.log(stopHiccuping.dog.sayHello.apply(stopHiccuping));
+console.log(stopHiccuping.dog.determineContext());
 
 sayHello = stopHiccuping.dog.sayHello.bind(stopHiccuping);
 console.log(sayHello());
@@ -156,18 +159,22 @@ console.log(sumValues.apply(this, nums));
 
 
 // setTimeout and .bind
+// because setTimeout is called at a later point, "this" refers to the window
+// setTimeout is a method on the window object
 
 const blah = {
-  food: 'Apples',
+  food: 'apples',
   eatFood: function() {
     setTimeout( function() {
-      console.log(`I'm going to eat some ${this.food} and ${this} is my context`);
-    }, 1000)
+      console.log(`I'm going to eat some ${this.food}`);
+    }.bind(this), 1000)
   }
 }
 
+
+// binding below would not work...you must attach .bind(this) DIRECTLY
+// to the setTimeout function like above ^^
 const eatFood = blah.eatFood.bind(blah);
-console.log(eatFood())
 
 function Person(firstName, lastName) {
   this.firstName = firstName;

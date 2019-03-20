@@ -8,15 +8,15 @@
   - we need to return the inner function for this to work
     and invoke it
   - we can either call the inner function right away by using
-    and extra () or we can store the result of the function
+    an extra () or we can store the result of the function
     in a variable
 
-  *private variable* can only be access from a certain scope
+  *private variable* can only be accessed from a certain scope
   and can't be modified from an external scope
 
 
 *** THIS ***
-  - determined by how the function is called ( execution context )
+  - determined by how the function is called (execution context)
   - can be determined using four rules:
       1. global
       2. object/implicit
@@ -27,19 +27,19 @@
     - when *this* is not inside of a declared object
     - there hasn't been an object literal defined that contains
       a function that uses keyword *this*
-    - value refers to the global object ( window in the browser )
+    - value refers to the global object (window in the browser)
       console.log(this) // window
 
   2. *OBJECT/IMPLICIT*
     - the value of *this* will always be the *closest* parent
       object when used inside of a declared object
-    - *this* is defined when a function is run ( this is why you use
-      the constructor functions! )
+    - *this* is defined when a function is run (this is why you use
+      the constructor functions!)
   3. *EXPLICIT: CALL/APPLY/BIND*
     - call, apply and bind are only methods that can be used by functions,
       not other data types
     - *CALL*:
-        first parameter: thisArg ( whatever you want the value of *this* to be )
+        first parameter: thisArg (whatever you want the value of *this* to be)
         other parameters: any parameters you want to pass to the function
           that you are calling .call() on
         when .call() is used, that function is immediately invoked
@@ -49,7 +49,7 @@
         second parameter: array of parameters to pass into the function
         immediately invoked
         this will spead out the array you pass in as the arguments - useful
-        when the function doesn't take an array as a parameter (Math.max())
+          when the function doesn't take an array as a parameter (Math.max())
     - *BIND*:
         almost the same as .call()
         returns a function definition, does not invoke immediately

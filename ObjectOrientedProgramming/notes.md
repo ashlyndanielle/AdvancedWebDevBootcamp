@@ -29,7 +29,7 @@
     between the object created and the prototype property of the 
     constructor function
 
-***Prototypes*** ( prototypes.js )
+***Prototypes*** (prototypes.js)
   - every constructor function has a property on it called
     .prototype which is an object
   - that object has a property on it called .constructor which
@@ -37,7 +37,7 @@
   - any property added to the prototype object is accessible
     via the constructor function and any object created with that
     constructor function
-  - objects created by the constructor get access to the to the
+  - objects created by the constructor get access to the
     prototype object through the link .__proto__
 
 ***Prototype Chain***
@@ -45,7 +45,7 @@
   - if it can't find something on your "object" it looks at
     __proto__ and continues up the __proto__ chain
 
-***Inheritance*** ( inheritance.js )
+***Inheritance*** (inheritance.js)
   - the passing of methods and properties from one class to another
   - use Object.create(Constructor.prototype)
   - must reset the constructor aftewards
