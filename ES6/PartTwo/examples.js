@@ -338,6 +338,7 @@ class MessageBoard {
   to the messages map with a key of whatever the value of this.id is and a value of whatever the
   string is that is passed to the function. The function should return the object created from the
   class so that the method can be chained. (HINT - to implement the last part, make sure to return this).
+  This message should also increment the id
   
   var m = new MessageBoard
   m.addMessage('hello');
@@ -346,8 +347,9 @@ class MessageBoard {
   m.addMessage('awesome!').addMessage('nice!').addMessage('cool!') 
   */
   
-  addMessage(message){
-    this.messages.set(this.id, message);
+  addMessage(value){
+    this.messages.set(this.id, value);
+    this.id++
     return this;
   }
   
@@ -389,8 +391,10 @@ class MessageBoard {
   */
 
   
-  findMessageByValue(){
-    
+  findMessageByValue(value){
+    for (let msg of this.messages.values()) {
+      if (msg === value) return msg;
+    }
   }
   
   /*
@@ -407,8 +411,9 @@ class MessageBoard {
   m.removeMessage() // m
   */
   
-  removeMessage(){
-      
+  removeMessage(id){
+    this.messages.delete(id);
+    return this;
   }
   
   /*
@@ -422,7 +427,7 @@ class MessageBoard {
   */
   
   numberOfMessages(){
-      
+    return this.messages.size;
   }
   
   /*
@@ -436,7 +441,7 @@ class MessageBoard {
   */
   
   messagesToArray(){
-      
+    return Array.from(this.messages.values())
   }
 }
 
@@ -446,8 +451,8 @@ Write a function called uniqueValues which accepts an array and returns the numb
 uniqueValues([1,1,2,2,2,3,3,3,3,4,4,4,5,5,6]) // 6
 */
 
-function uniqueValues(){
-
+function uniqueValues(arr){
+  return new Set(arr).size;
 }
 
 /*
@@ -460,8 +465,8 @@ hasDuplicates([1,2,3,4,5,6]) // false
 hasDuplicates([]) // false
 */
 
-function hasDuplicates(){
-
+function hasDuplicates(arr){
+  return arr.length !== new Set(arr).size
 }
 
 /*
@@ -469,7 +474,6 @@ function hasDuplicates(){
 Write a function called countPairs which accepts an array of numbers and a number. The function should return the
 number of unique pairs (two numbers) that sum up to the number passed to the function.
 
-countPairs([8,2,6,4,10,0],10) // 3
 countPairs([8,2],10) // 1
 countPairs([1,2],10) // 0
 countPairs([1,2,3,4,5],10) // 0
@@ -478,6 +482,23 @@ countPairs([5,4,-10,6,-20,16],-4) // 2
 countPairs([0,-4],-4) // 1
 */
 
-function countPairs(){
-
+function countPairs(arr, num){
+  // remove duplicates
+  var cache = new Set(arr);
+  console.log(cache)
+  var count = 0;
+  for (let val of arr) {
+    // removing the value will prevent us from dealing with a pair of the same number
+    // for example 8: 8+2=10 will up the count and then 2: 2+8=10 would ALSO up the count
+    cache.delete(val);
+    if (cache.has(num - val)) {
+      count++
+    }
+  }
+  console.log(count);
+  return count;
 }
+
+
+countPairs([8,2,6,4,10,0],10) // 3
+// countPairs([8,2,6,4,2,10,0],10) // 3
