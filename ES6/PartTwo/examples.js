@@ -556,11 +556,209 @@ Promise.all([titanicPromise, shrekPromise, braveheartPromise])
   })
 })
 
-// Promise assignment
-function getUser(user) {
-  return $.getJSON(`https://developer.github.com/v3/users/${user}`);
+
+/*********************/
+/***** EXERCISES *****/
+/*********************/
+
+// EXERCISE ONE
+
+function getMostFollowers(...usernames) {
+  let baseURL = 'https://api.github.com/users/';
+  let urls = usernames.map(user => $.getJSON(baseURL+user));
+  return Promise.all(urls).then(data => {
+    let max = data.sort((a,b) => b.followers - a.followers)[0];
+    return `${max.name} has the most followers with ${max.followers}`
+  })
+  .catch(err => console.log(err));
 }
 
-function getMostFollowers() {
+getMostFollowers('ashlyndanielle', 'gnordstrom').then(data => console.log(data))
 
+
+// EXERCISE TWO
+
+function starWarsString(id) {
+  let str = '';
+  return $.getJSON(`https://swapi.co/api/people/${id}`).then(data => {
+    str += `${data.name} is featured in `;
+    let filmData = data.films[0];
+    return $.getJSON(filmData);
+  }).then(res => {
+    str += `${res.title}, directed by ${res.director} `
+    let planetData = res.planets[0];
+    return $.getJSON(planetData);
+  }).then(res => {
+    str += `and it takes place on ${res.name}`;
+    return str;
+  }).then(finalString => {
+    return finalString;
+  })
 }
+
+starWarsString(1).then(data => console.log(data));
+
+
+
+/**********************/
+/***** GENERATORS *****/
+/**********************/
+
+function* displayValues() {
+  yield 'First';
+  yield 'Second';
+  yield 'Third';
+}
+var genValues = displayValues();
+genValues.next().value() // "First"
+genValues.next().value() // "Second"
+genValues.next().value() // "Third"
+
+function* pauseAndReturnValues(num) {
+  for(let i = 0; i < num; i++) {
+    yield i;
+  }
+}
+
+for (val of pauseAndReturnValues(3)) {
+  console.log(val);
+}
+// 0
+// 1
+// 3
+
+
+/***********************/
+/***** NEW METHODS *****/
+/***********************/
+
+
+// Object.assign
+// create copies of objects without just creating a reference that
+// would/could override the original object
+var o = {name: 'Elie'};
+var o2 = Object.assign({}, o);
+
+o2.name = 'Tim';
+// without Object.assign, o.name would also change to Tim
+o.name; // 'Elie'
+
+
+
+// array.from
+var divs = document.getElementsByTagName('div');
+var converted = Array.from(divs);
+
+// .find - for arrays
+// will return first value or undefined
+var instructors = [{name: 'Ashlyn'}, {name: 'Gus'}, {name: 'Brandon'}];
+instructors.find(instructor => instructor.name === 'Gus'); // {name: 'Gus'}
+
+
+// .findIndex - for arrays
+// will return index or -1 if doesn't exist
+instructors.findIndex(val => val.name === 'Brandon') // 2
+
+
+// includes - for strings
+// returns a boolean if a value is in a string
+"awesome".includes('some'); // true
+
+
+// Number.isFinite
+// NaN is technically a number so this makes it easier to check if something
+// is a number: returns true or false
+function seeIfNumber(val) {
+  if (Number.isFinite(val)) {
+    return "It's a number!"
+  }
+}
+// there is also a Number.isInteger function
+
+
+
+
+/*********************/
+/***** EXERCISES *****/
+/*********************/
+
+/* 
+Write a function called copyObject, which accepts one parameter, an object. The function 
+should return a shallow copy of the object.
+
+var o = {name: 'Elie'}
+var o2 = copyObject({}, o)
+o2.name = "Tim"
+o2.name // 'Tim'
+o.name // 'Elie'
+*/
+
+function copyObject(obj){
+  return Object.assign({}, obj);
+}
+
+/* 
+
+Write a function called checkIfFinite which accepts one parameter and returnstrue if that 
+parameter is a finite number.
+
+checkIfFinite(4) // true
+checkIfFinite(-3) // true
+checkIfFinite(4. // .toEqual(true
+checkIfFinite(NaN) // false
+checkIfFinite(Infinity) // false
+*/
+
+function checkIfFinite(val){
+  return Number.isFinite(val)
+}
+
+/*
+
+Write a function called areAllNumbersFinite which accepts an array and returns true if every
+single value in the array is a finite number, otherwise return false.
+
+var finiteNums = [4,-3,2.2]
+var finiteNumsExceptOne = [4,-3,2.2,NaN]
+areAllNumbersFinite(finiteNums) // true
+areAllNumbersFinite(finiteNumsExceptOne) // false
+*/
+
+function areAllNumbersFinite(arr){
+  return arr.every(val => Number.isFinite(val));
+}
+
+/* 
+
+Write a function called convertArrayLikeObject which accepts a single parameter, an array 
+like object. The function should return the array like object converted to an array.
+
+var divs = document.getElementsByTagName('div')
+divs.reduce // undefined
+
+var converted = convertArrayLikeObject(divs)
+converted.reduce // funciton(){}...
+*/
+
+function convertArrayLikeObject(obj){
+  return Array.from(obj);
+}
+
+/*
+
+Write a function called displayEvenArguments which accepts a variable number of arguments 
+and returns a new array with all of the arguments that are even numbers.
+
+displayEvenArguments(1,2,3,4,5,6) // [2,4,6]
+displayEvenArguments(7,8,9) // [8]
+displayEvenArguments(1,3,7) // []
+*/
+
+function displayEvenArguments(){
+  return Array.from(arguments).filter(num => {
+    return Number.isFinite(num) && num%2 === 0
+  })
+}
+
+
+

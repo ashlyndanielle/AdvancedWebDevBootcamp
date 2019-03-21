@@ -95,4 +95,23 @@ __OBJECTIVES__
     - if all passed-in promises fulfill, Promise.all is fulfilled with an array of the
       values from the passed-in promises in the same order as they were passed in
     - the promises don't resolve sequentially but Promise.all waits for them
+
+*GENERATORS*
+  * special kind of function that can pause execution and resume at any time
+  * created using a *
+  * contain a Symbol.iterator (can use for...of loop on them)
+
+*Object.assign*
+  * makes a copy of an object
+  * have to pass in an empty object as the first parameter or it will just be a reference
+  * does not "deep clone" - must create own function or use external libraries
+
+*Array.from*
+  * creates an array from an array-like object
+
+*.find()*
+  * invoked on arrays
+  * accepts callback where we return a condition
+  * will return the first value where the condition returns true or
+    undefined if not found
 **PART TWO**
