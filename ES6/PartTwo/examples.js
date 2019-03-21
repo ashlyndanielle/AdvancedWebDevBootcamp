@@ -502,3 +502,65 @@ function countPairs(arr, num){
 
 countPairs([8,2,6,4,10,0],10) // 3
 // countPairs([8,2,6,4,2,10,0],10) // 3
+
+
+
+/********************/
+/***** PROMISES *****/
+/********************/
+
+function displayAtRandomTime(){
+  return new Promise(function(resolve, reject) {
+    setTimeout(function(){
+      if(Math.random() > .5) {
+        resolve('Yes!');
+      } else {
+        reject('No!');
+      }
+    }, 1000);
+  });
+}
+
+displayAtRandomTime().then(function(value) {
+  console.log(value);
+}).catch(function(error) {
+  console.log(error);
+})
+
+// example for console (page must use jquery)
+
+var years = [];
+$.getJSON('https://omdbapi.com?t=titanic&apikey=thewdb')
+.then(movie => {
+  years.push(movie.Year);
+  return $.getJSON('https://omdbapi.com?t=shrek&apikey=thewdb')
+})
+.then(movie => {
+  years.push(movie.Year);
+  console.log(years);
+})
+console.log('ALL DONE');
+
+function getMovie(title) {
+  return $.getJSON(`https://omdbapi.com?t=${title}&apikey=thewdb`)
+}
+
+var titanicPromise = getMovie('titanic');
+var shrekPromise = getMovie('shrek');
+var braveheartPromise = getMovie('braveheart');
+
+Promise.all([titanicPromise, shrekPromise, braveheartPromise])
+.then(movies => {
+  return movies.forEach(value => {
+    console.log(value.Title, value.Year);
+  })
+})
+
+// Promise assignment
+function getUser(user) {
+  return $.getJSON(`https://developer.github.com/v3/users/${user}`);
+}
+
+function getMostFollowers() {
+
+}

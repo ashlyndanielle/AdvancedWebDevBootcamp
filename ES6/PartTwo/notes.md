@@ -77,4 +77,22 @@ __OBJECTIVES__
   * created using *new* keyword
   * also has a *WeakSet* similar to WeakMap
 
+*PROMISES*
+  * a one time guaranteed return of some future value
+  * when the value is figured out the promise is resolved or rejected
+  * solution to callback hell
+  * created using the *new* keyword
+  * has a constructor that accepts a callback function containing two
+    parameters - resolve and reject (but you can call them whatever you want)
+  * these parameters are both functions to be run if the promise is
+    resolved or rejected
+  * the returned value from a promise will always contain a .then and .catch
+    which are functions to be executed when the promise is resolved or rejected
+  * each .then returns another promise....which has another .then and .catch (thenable)
+  *Promise.all*
+    - accepts an arry of promises and resolves all of them or rejects once a single
+      one of the promises has been rejected (fail fast)
+    - if all passed-in promises fulfill, Promise.all is fulfilled with an array of the
+      values from the passed-in promises in the same order as they were passed in
+    - the promises don't resolve sequentially but Promise.all waits for them
 **PART TWO**
