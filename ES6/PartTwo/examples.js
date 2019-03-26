@@ -759,6 +759,3 @@ function displayEvenArguments(){
     return Number.isFinite(num) && num%2 === 0
   })
 }
-
-
-
