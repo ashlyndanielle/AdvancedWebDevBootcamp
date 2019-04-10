@@ -38,6 +38,7 @@
         .classed('new-class', true)
         .text('D3 is cool');
       
+    d3.selectAll('li').nodes();
     // selectors and callbacks
     d3.selectAll('li')
       // runs for each li
@@ -55,9 +56,11 @@
     // chaining selectors and standard indentation
     d3.select('.outer')
         .style('color', 'purple')
+      // this selects the div inside of .outer
       .select('div')
         .style('font-size', '30px')
         .style('background-color', 'orange')
+      // this selects the div inside the above div
       .select('div')
         .style('border', '8px solid blue')
   </script>
