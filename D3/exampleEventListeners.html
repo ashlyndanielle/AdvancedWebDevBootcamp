@@ -88,13 +88,15 @@
           // accessing properties: selection.property(name, newValue)
           // access a property (input value) which is not accessible as
           // an element attribute
-          .text(input.property('value'));
+          .text(input.property('value'))
+          .on('click', removeTodo)
       input.property('value', '');
     })
     // Removing Elements: selection.remove();
-    d3.selectAll('p').on('click', () => {
+    d3.selectAll('p').on('click', removeTodo)
+    function removeTodo() {
       d3.event.target.remove();
-    })
+    }
   </script>
 </body>
 
