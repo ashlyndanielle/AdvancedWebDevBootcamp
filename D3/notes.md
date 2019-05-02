@@ -25,3 +25,7 @@ __EVENT LISTENERS__
   * to get access to the event in an event handler callback we use d3.event
   * appending elements returns a d3 selection of that element (so you can chain methods)
   * use selection.remove() to remove elements
+
+
+
+__DATA JOINS and UPDATE PATTERNS__
