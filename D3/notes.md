@@ -29,3 +29,9 @@ __EVENT LISTENERS__
 
 
 __DATA JOINS and UPDATE PATTERNS__
+
+* callback structure *
+  function (d, i) {
+    <!-- d will always refer to the data bound to the current element -->
+    <!-- i is index -->
+  }
