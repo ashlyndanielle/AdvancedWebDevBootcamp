@@ -4,6 +4,7 @@ const reset = d3.select('#reset');
 
 let previousChars = [];
 let currentChars = [];
+let combinedChars = [];
 
 countButton.on('click', updateCharacterData);
 
@@ -14,9 +15,11 @@ reset.on('click', () => {
 	d3.selectAll('.letter')
 })
 
-input.on('input', () => {
-	console.log('working')
-})
+
+
+
+
+
 
 function updateCharacterData() {
 	d3.event.preventDefault();
@@ -41,6 +44,11 @@ function updateCharacterData() {
 	}
 
 	input.property('value', '');
+
+	console.log('PREV__________________');
+	console.table(previousChars);
+	console.log('CURR__________________')
+	console.table(currentChars);
 
 	// update
 	// d3.select('#letters')
