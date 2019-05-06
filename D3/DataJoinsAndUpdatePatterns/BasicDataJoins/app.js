@@ -73,7 +73,6 @@ appendQuotes('#quotes', 'li', quotes);
 // d3.selectAll('li')
 //   .data(quotes)
 
-var noRQuotes = quotes.filter(quote => quote.rating !== 'R');
 
 // d3.selectAll('li')
 //   // usage of key function to specify how data is joined
@@ -86,6 +85,7 @@ var removeBtn = d3.select("#remove");
 var addBtn = d3.select("#add");
 
 removeBtn.on('click', () => {
+  var noRQuotes = quotes.filter(quote => quote.rating !== 'R');
   d3.selectAll("li")
     .data(noRQuotes, d => d.quote)
     .exit()
@@ -104,7 +104,7 @@ function appendQuotes(container, selection, data) {
       .style('list-style', 'none')
 
   d3.select(container)
-    .selectAll(selection).data(data)
+    .selectAll(selection).data(data, d => d.quote)
   // creates a d3 selection of the "enter" nodes with attached data
     .enter()
     .append('li')

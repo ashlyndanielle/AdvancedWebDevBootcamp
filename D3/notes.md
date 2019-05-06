@@ -53,3 +53,10 @@ __DATA JOINS and UPDATE PATTERNS__
 
 *Merging Selections*
 * selection.merge(otherSelection)
+* can be used to merge together the enter and update selections
+
+*General Update Pattern*
+1. grab the update selection, make any changes unique to that selection, and store in a variable
+2. grab the exit selection and remove any unnecessary elements
+3. grab the enter seleection and make any changes unique to that selection
+4. merge the enter and update selections and make any changes you want to be shared across both selections
