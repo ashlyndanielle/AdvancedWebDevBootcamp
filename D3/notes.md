@@ -29,9 +29,27 @@ __EVENT LISTENERS__
 
 
 __DATA JOINS and UPDATE PATTERNS__
+* let the data be the single source of truth and then update the view
+
+* by default, data is joined to elements on the page by INDEX
+* we can specify how data is joined by passing a "key function" as a second argument
+  into the .data() method
+    * the return value of the key function is what is used to join elements and data
 
 * callback structure *
   function (d, i) {
     <!-- d will always refer to the data bound to the current element -->
     <!-- i is index -->
   }
+* .enter() selects the nodes that D3 creates on the fly when it needs to bind
+  data to elements that don't exist yet
+* .exit() selects elements that should be removed from the dom when there isn't any
+  data to bind to them
+
+*Selection Types*
+* enter: data with no elements
+* exit: elements with no data
+* update: data WITH elements
+
+*Merging Selections*
+* selection.merge(otherSelection)
