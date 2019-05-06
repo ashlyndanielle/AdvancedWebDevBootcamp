@@ -58,5 +58,6 @@ function updateCharacterData() {
 		.append('div')
 			.text(d => d.letter)
 			.classed('letter new', true)
+			.style('height', d => `${d.count}.5em`)
 	// merge
 }
