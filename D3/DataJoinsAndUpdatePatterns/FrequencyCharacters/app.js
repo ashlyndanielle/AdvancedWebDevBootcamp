@@ -11,8 +11,7 @@ reset.on('click', () => {
 	d3.event.preventDefault();
 	previousChars = [];
 	currentChars = [];
-	console.log(previousChars);
-	console.log(currentChars);
+	d3.selectAll('.letter')
 })
 
 input.on('input', () => {
@@ -37,10 +36,8 @@ function updateCharacterData() {
 		// update data catagories
 		if (currentChars) {
 			previousChars = currentChars;
-			currentChars = charObject;
-		} else {
-			currentChars = charObject;
 		}
+		currentChars = charObject;
 	}
 
 	input.property('value', '');
@@ -50,6 +47,10 @@ function updateCharacterData() {
 	// 	.selectAll('div')
 	// 	.data(currentChars)
 	// exit
+	d3.selectAll('.letter')
+		.data(currentChars, d => d.letter)
+		.exit()
+		.remove()
 	// enter
 	d3.select('#letters')
 		.selectAll('div')
@@ -58,6 +59,6 @@ function updateCharacterData() {
 		.append('div')
 			.text(d => d.letter)
 			.classed('letter new', true)
-			.style('height', d => `${d.count}.5em`)
+			.style('padding-top', d => `${d.count-1}em`)
 	// merge
 }
