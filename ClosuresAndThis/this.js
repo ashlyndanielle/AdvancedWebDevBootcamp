@@ -19,10 +19,10 @@ console.log(oopsGlobal);
 // object/implicit
 const person = {
   firstName: "Gus",
-  sayHi: function() {
+  sayHi: function () {
     return `Hi ${this.firstName}`
   },
-  determineContext: function() {
+  determineContext: function () {
     return this === person;
   }
 }
@@ -35,7 +35,7 @@ console.log(person.determineContext());
 const anotherPerson = {
   firstName: 'Ashlyn',
   // *this* will still refer to the global object not anotherPerson
-  // because it's defined when a function is run
+  // because this is defined when a function is run
   determineContext: this
 }
 
@@ -44,18 +44,18 @@ console.log(anotherPerson.determineContext)
 // explicit
 const stopHiccuping = {
   firstName: 'Stupid',
-  sayHi: function() {
+  sayHi: function () {
     return `Hi ${firstName}`;
   },
-  determineContext: function() {
+  determineContext: function () {
     return this === stopHiccuping;
   },
   dog: {
     firstName: 'Reo',
-    sayHello: function() {
+    sayHello: function () {
       return `Bark bark ${this.firstName}`;
     },
-    determineContext: function() {
+    determineContext: function () {
       return `dog context is ${this.firstName}`
       return this === stopHiccuping.dog;
     }
@@ -73,7 +73,7 @@ console.log(sayHello());
 // reusing code:
 const colt = {
   firstName: 'Colt',
-  sayHi: function() {
+  sayHi: function () {
     return `Hi ${this.firstName}`;
   }
 }
@@ -136,7 +136,7 @@ function arrayFrom(arrayLikeObject) {
 
 // ***** CALL VS APPLY ***** //
 
-function addNumbers(a,b,c,d) {
+function addNumbers(a, b, c, d) {
   return `${this.firstName} just calculated ${a+b+c+d}`;
 }
 
@@ -150,8 +150,8 @@ const nums = [2, 3, 4];
 console.log(Math.max(nums));
 console.log(Math.max.apply(this, nums))
 
-function sumValues(a,b,c) {
-  return a+b+c;
+function sumValues(a, b, c) {
+  return a + b + c;
 }
 
 console.log(sumValues(nums));
@@ -164,8 +164,8 @@ console.log(sumValues.apply(this, nums));
 
 const blah = {
   food: 'apples',
-  eatFood: function() {
-    setTimeout( function() {
+  eatFood: function () {
+    setTimeout(function () {
       console.log(`I'm going to eat some ${this.food}`);
     }.bind(this), 1000)
   }
@@ -181,5 +181,5 @@ function Person(firstName, lastName) {
   this.lastName = lastName;
 }
 
-const mom = new Person( "Betsy", "Erickson" );
+const mom = new Person("Betsy", "Erickson");
 console.log(mom);

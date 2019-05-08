@@ -97,5 +97,12 @@ __D3 and SVG__
         cy: y-coordinate of center
         radius: how large it is
   * write text on svg
+    - x: x-coordinate of lower left corner
+      y: y-cooridinate of lower left corner
+    - shift the text from anchor point
+      dx: horizontal shift
+      dy: vertical shift
+    - text anchor (on the element or in css)
+      text-anchor: start || middle || end
   * draw general paths
   * use D3 to build an svg bar chart
